@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institut de beauté Vegas - Yaoundé</title>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0A0A0A;
+            color: #F5F5F5;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+        header {
+            background-color: #1A1A1A;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 2px solid #FFD700;
+        }
+       .logo { color: #FFD700; font-size: 1.5em; font-weight: bold; }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a { color: #F5F5F5; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #FF69B4; }
+        #btnHamburger { display: none; background: none; border: none; color: #FFD700; font-size: 28px; cursor: pointer; }
+
+       .hero {
+            height: 90vh;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                              url('https://images.unsplash.com/photo-1522337360788-8bc707932b2f?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+       .hero h1 { font-size: 3em; color: #FFD700; }
+       .hero p { font-size: 1.2em; color: white; }
+
+       .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+       .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+       .grid-bento {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+       .card {
+            background-color: #1A1A1A;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #FFD700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+       .card:hover { transform: scale(1.02); border-color: #FF69B4; }
+       .card-large { grid-column: 1 / -1; }
+       .details {
+            max-height: 0;
+            overflow-y: hidden;
+            transition: max-height 0.5s ease;
+        }
+       .details.show {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        section { padding: 60px 20px; max-width: 900px; margin: auto; }
+        h2 { color: #FF69B4; border-bottom: 2px solid #FFD700; padding-bottom: 5px; margin-bottom: 20px; }
+
+        form { display: flex; flex-direction: column; gap: 15px; }
+        input, textarea {
+            padding: 10px; border: 1px solid #FFD700; background: #1A1A1A; color: white; border-radius: 5px;
+        }
+        button[type="submit"] {
+            background: #FFD700; color: #0A0A0A; border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute; top: 60px; right: 0;
+                background-color: #1A1A1A; width: 100%; padding: 20px;
+            }
+            #btnHamburger { display: block; }
+           .grid-bento { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Institut Vegas</div>
+        <button id="btnHamburger" onclick="toggleMenu()">≡</button>
+        <nav>
+            <ul id="menu">
+                <li><a href="#accueil" onclick="toggleMenu()">Accueil</a></li>
+                <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+                <li><a href="#apropos" onclick="toggleMenu()">À propos</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <h1>Institut de beauté Vegas</h1>
+        <p>Brillez comme à Vegas ✨</p>
+    </section>
+
+    <section id="services">
+        <h2>Nos Services</h2>
+        <div class="grid-bento">
+            <div class="card card-large" onclick="toggleDetails(this)">
+                <h3>Pack VIP Vegas</h3>
+                <p>Soins complet visage + corps</p>
+                <div class="details">
+                    <p>Inclus: Gommage, Massage 1h, Soins visage hydratant. Produits de luxe. Durée 2h30. Réservation 24h à l'avance.</p>
+                </div>
+            </div>
+            <div class="card" onclick="toggleDetails(this)">
+                <h3>Visage</h3>
+                <p>Soins hydratants</p>
+                <div class="details"><p>Nettoyage profond, masque éclat, massage. 15000 FCFA</p></div>
+            </div>
+            <div class="card" onclick="toggleDetails(this)">
+                <h3>Ongles</h3>
+                <p>Manucure & Pédicure</p>
+                <div class="details"><p>Gel, Vernis semi-permanent, Nail Art. 8000 FCFA</p></div>
+            </div>
+            <div class="card" onclick="toggleDetails(this)">
+                <h3>Cheveux</h3>
+                <p>Coiffure & Maquillage</p>
+                <div class="details"><p>Pour mariage, soirée. 25000 FCFA</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="reveal">
+        <h2>Notre Process</h2>
+        <p>1. Accueil personnalisé <br> 2. Diagnostic beauté gratuit <br> 3. Soins avec produits haut de gamme <br> 4. Résultat : Vous repartez rayonnante!</p>
+    </section>
+
+    <section id="contact" class="reveal">
+        <h2>Contactez-nous</h2>
+        <form onsubmit="validerForm(event)">
+            <input type="text" id="nom" placeholder="Votre Nom">
+            <input type="email" id="email" placeholder="Votre Email">
+            <textarea id="message" placeholder="Votre Message" rows="4"></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("menu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+
+        function toggleDetails(card) {
+            let details = card.querySelector(".details");
+            details.classList.toggle("show");
+        }
+
+        window.addEventListener("scroll", function() {
+            let reveals = document.querySelectorAll(".reveal");
+            for(let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                if(elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        });
+
+        function validerForm(event) {
+            event.preventDefault();
+            let nom = document.getElementById("nom").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            if(nom === "" || email === "" || message === "") {
+                alert("Veuillez remplir tous les champs!");
+            } else if(!email.includes("@")) {
+                alert("Veuillez entrer un email valide!");
+            } else {
+                alert("Message envoyé avec succès!");
+            }
+        }
+    </script>
+
+</body>
+</html>
