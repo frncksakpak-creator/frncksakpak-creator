@@ -172,6 +172,32 @@
     background:var(--ink);
   }
 
+  .opening{
+    background:var(--ink); color:var(--cream); overflow:hidden;
+  }
+  .opening .wrap{
+    display:grid; grid-template-columns:1fr 300px; gap:56px; align-items:center;
+  }
+  .opening .eyebrow{color:var(--gold-soft);}
+  .opening h2{
+    color:var(--cream); font-size:clamp(1.8rem,3.4vw,2.6rem); font-style:italic;
+  }
+  .opening p{color:#D8CBBB; max-width:44ch;}
+  .opening-date{
+    display:inline-flex; align-items:center; gap:10px; margin:18px 0 26px 0;
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; color:var(--gold-soft);
+  }
+  .opening-date .dot{width:6px; height:6px; border-radius:50%; background:var(--gold);}
+  .opening-video-frame{
+    position:relative; border-radius:22px; overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.12);
+    aspect-ratio:9/16;
+  }
+  .opening-video-frame video{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
   .tarifs-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px;}
   .tarif-card{
     background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
@@ -261,6 +287,9 @@
     .service-row.reverse .service-text{order:2;}
     .gallery-grid{grid-template-columns:repeat(2,1fr);}
     .tarifs-grid{grid-template-columns:1fr;}
+    .opening .wrap{grid-template-columns:1fr; text-align:center;}
+    .opening p{margin-left:auto; margin-right:auto;}
+    .opening-video-frame{max-width:280px; margin:0 auto;}
     .contact-grid{grid-template-columns:1fr;}
     section{padding:64px 0;}
     .service-img img{height:280px;}
@@ -307,6 +336,25 @@
     </div>
   </div>
 </header>
+
+<section class="opening reveal">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Grand jour</span>
+      <h2>Bientôt l'ouverture de SV Beauty</h2>
+      <div class="opening-date"><span class="dot"></span> Samedi 08 août 2026</div>
+      <p>Nous ouvrons enfin nos portes à Odza ! Venez découvrir notre institut, rencontrer l'équipe et profiter des animations du jour de lancement.</p>
+      <div class="hero-ctas" style="justify-content:flex-start;">
+        <a class="btn btn-primary" href="https://wa.me/237656109024">Réserver ma place</a>
+      </div>
+    </div>
+    <div class="opening-video-frame">
+      <video controls muted playsinline poster="ouverture-poster.jpg">
+        <source src="ouverture-institut.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
 
 <section class="philosophy reveal">
   <div class="wrap">
@@ -457,11 +505,11 @@
         poster="https://images.unsplash.com/photo-1612887390768-fb02affea7a6?q=60&w=500&auto=format&fit=crop">
         <source src="gallery-video.mp4" type="video/mp4">
       </video>
-      <a href="https://images.unsplash.com/photo-1630843599725-32ead7671867?q=80&w=1200&auto=format&fit=crop" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1630843599725-32ead7671867?q=60&w=500&auto=format&fit=crop" alt="Réalisation manucure SV Beauty">
+      <a href="realisation-ongles-rouge.jpg" target="_blank" rel="noopener">
+        <img src="realisation-ongles-rouge.jpg" alt="Réalisation manucure rouge SV Beauty">
       </a>
-      <a href="https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?q=80&w=1200&auto=format&fit=crop" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?q=60&w=500&auto=format&fit=crop" alt="Réalisation manucure SV Beauty">
+      <a href="realisation-ongles-corail.jpg" target="_blank" rel="noopener">
+        <img src="realisation-ongles-corail.jpg" alt="Réalisation manucure corail SV Beauty">
       </a>
       <a href="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=1200&auto=format&fit=crop" target="_blank" rel="noopener">
         <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=60&w=500&auto=format&fit=crop" alt="Réalisation pédicure SV Beauty">
