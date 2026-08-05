@@ -172,6 +172,31 @@
     background:var(--ink);
   }
 
+  .tarifs-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px;}
+  .tarif-card{
+    background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 30px; opacity:0; transform:translateY(24px);
+  }
+  .tarif-card-head{display:flex; align-items:center; gap:14px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--line);}
+  .tarif-card-head .num{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--gold); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:1rem;
+  }
+  .tarif-card-head h3{font-size:1.2rem; font-style:italic; margin:0;}
+  .tarif-list{list-style:none; margin:0; padding:0;}
+  .tarif-list li{
+    display:flex; align-items:baseline; gap:8px;
+    font-size:.92rem; color:var(--text); padding:8px 0;
+  }
+  .tarif-list li .name{white-space:nowrap;}
+  .tarif-list li .fill{flex:1; border-bottom:1px dotted var(--line); transform:translateY(-4px);}
+  .tarif-list li .price{white-space:nowrap; color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums;}
+  .tarifs-note{
+    margin-top:32px; text-align:center; font-size:.85rem; color:var(--text);
+    font-style:italic;
+  }
+
   .process{margin-top:56px; max-width:640px; margin-left:auto; margin-right:auto;}
   .step{
     display:grid; grid-template-columns:56px 1fr; gap:24px;
@@ -235,6 +260,7 @@
     .service-row.reverse .service-img{order:1;}
     .service-row.reverse .service-text{order:2;}
     .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .tarifs-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
     section{padding:64px 0;}
     .service-img img{height:280px;}
@@ -248,6 +274,7 @@
     <div class="logo"><img src="logo-sv-beauty.png" alt="SV Beauty"></div>
     <div class="nav-links">
       <a href="#services">Prestations</a>
+      <a href="#tarifs">Tarifs</a>
       <a href="#gallery">Galerie</a>
       <a href="#process">Votre visite</a>
       <a class="cta" href="#contact">Réserver</a>
@@ -256,6 +283,7 @@
   </div>
   <div id="mobileMenu">
     <a href="#services" onclick="fermerMenu()">Prestations</a>
+    <a href="#tarifs" onclick="fermerMenu()">Tarifs</a>
     <a href="#gallery" onclick="fermerMenu()">Galerie</a>
     <a href="#process" onclick="fermerMenu()">Votre visite</a>
     <a href="#contact" onclick="fermerMenu()">Contact</a>
@@ -347,7 +375,80 @@
   </div>
 </section>
 
-<section id="gallery" style="background:var(--paper);">
+<section id="tarifs" style="background:var(--paper);">
+  <div class="wrap reveal">
+    <span class="eyebrow">Grille tarifaire</span>
+    <h2 style="font-size:2rem; font-style:italic;">Nos tarifs, en toute transparence</h2>
+    <p style="max-width:52ch;">Tous les prix sont indiqués en FCFA. Pour toute question sur une prestation, contactez-nous directement sur WhatsApp.</p>
+
+    <div class="tarifs-grid">
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">I</span><h3>Maquillage</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Maquillage jour (nude/cocktail)</span><span class="fill"></span><span class="price">4 000</span></li>
+          <li><span class="name">Maquillage soirée</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Maquillage marié, par séance</span><span class="fill"></span><span class="price">15 000</span></li>
+          <li><span class="name">À domicile</span><span class="fill"></span><span class="price">+ 10 000</span></li>
+          <li><span class="name">Essai maquillage marié</span><span class="fill"></span><span class="price">10 000</span></li>
+          <li><span class="name">Fille d'honneur, par séance</span><span class="fill"></span><span class="price">4 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">II</span><h3>Soin</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Soin de visage complet</span><span class="fill"></span><span class="price">4 000</span></li>
+          <li><span class="name">Pédicure mixte chaude</span><span class="fill"></span><span class="price">3 000</span></li>
+          <li><span class="name">Jelly pédicure</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Manucure</span><span class="fill"></span><span class="price">2 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">III</span><h3>Extension de cils</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Hybride</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Hybride papillon</span><span class="fill"></span><span class="price">6 000</span></li>
+          <li><span class="name">Volume</span><span class="fill"></span><span class="price">7 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">IV</span><h3>Épilation & Traçage</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Épilation sous cils</span><span class="fill"></span><span class="price">1 000</span></li>
+          <li><span class="name">Traçage Tancho</span><span class="fill"></span><span class="price">1 500</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">V</span><h3>Onglerie</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Construction gel, à partir de</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Résine, à partir de</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Gainage, à partir de</span><span class="fill"></span><span class="price">4 000</span></li>
+          <li><span class="name">Capsule vernis gel</span><span class="fill"></span><span class="price">2 500</span></li>
+          <li><span class="name">Vernis gel</span><span class="fill"></span><span class="price">1 500</span></li>
+          <li><span class="name">Nail art, à partir de</span><span class="fill"></span><span class="price">1 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">VI</span><h3>Coiffure</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Pose lace</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Traitement de mèche, à partir de</span><span class="fill"></span><span class="price">2 000</span></li>
+          <li><span class="name">Customisation</span><span class="fill"></span><span class="price">2 000</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="tarifs-note">Tarifs susceptibles d'être ajustés selon la complexité de la prestation. Complexe Kinshasa, entrée Koweit, Odza — Yaoundé.</p>
+  </div>
+</section>
+
+<section id="gallery">
   <div class="wrap reveal">
     <span class="eyebrow">Galerie</span>
     <h2 style="font-size:2rem; font-style:italic;">Nos réalisations</h2>
@@ -413,7 +514,7 @@
     <div class="contact-grid">
       <div class="contact-card">
         <strong>Adresse</strong>
-        <p>Yaoundé, Cameroun</p>
+        <p>Entrée Koweit, Odza<br>Complexe Kinshasa — Yaoundé</p>
         <strong>Téléphone</strong>
         <p><a href="tel:+237656109024">+237 656 109 024</a></p>
         <strong>WhatsApp</strong>
@@ -522,6 +623,15 @@
       opacity: 1, y: 0, duration: 0.9, ease: "power2.out",
       scrollTrigger: { trigger: row, start: "top 82%" }
     });
+  });
+
+  gsap.to(".tarif-card", {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power2.out",
+    stagger: 0.12,
+    scrollTrigger: { trigger: ".tarifs-grid", start: "top 85%" }
   });
 
   gsap.to(".step", {
