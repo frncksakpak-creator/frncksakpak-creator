@@ -69,10 +69,11 @@
     border-bottom:1px solid var(--line);
   }
   .nav-inner{
-    max-width:1100px; margin:0 auto; padding:20px 24px;
+    max-width:1100px; margin:0 auto; padding:14px 24px;
     display:flex; align-items:center; justify-content:space-between;
   }
-  .logo{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:1.35rem; color:var(--ink); letter-spacing:.01em;}
+  .logo{display:flex; align-items:center;}
+  .logo img{height:56px; width:auto; display:block;}
   .nav-links{display:flex; align-items:center; gap:32px;}
   .nav-links a{color:var(--text); text-decoration:none; font-size:.88rem; font-weight:500; letter-spacing:.03em; transition:.2s color;}
   .nav-links a:hover{color:var(--gold);}
@@ -244,7 +245,7 @@
 
 <nav>
   <div class="nav-inner">
-    <div class="logo">SV Beauty</div>
+    <div class="logo"><img src="logo-sv-beauty.png" alt="SV Beauty"></div>
     <div class="nav-links">
       <a href="#services">Prestations</a>
       <a href="#gallery">Galerie</a>
