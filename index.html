@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SV Beauty — Institut de beauté à Yaoundé | Manucure, Pédicure, Maquillage</title>
+<meta name="description" content="SV Beauty, institut de beauté à Yaoundé. Manucure, pédicure et maquillage haut de gamme dans une ambiance chaleureuse. Réservez votre rendez-vous.">
+<meta name="keywords" content="institut de beauté Yaoundé, manucure Yaoundé, pédicure Cameroun, maquillage Yaoundé, SV Beauty">
+<meta name="author" content="SV Beauty">
+<meta property="og:title" content="SV Beauty — Institut de beauté à Yaoundé">
+<meta property="og:description" content="Manucure, pédicure et maquillage haut de gamme, dans une ambiance chaleureuse. Réservez votre rendez-vous.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SV Beauty — Institut de beauté à Yaoundé">
+<meta name="twitter:description" content="Manucure, pédicure et maquillage haut de gamme, dans une ambiance chaleureuse.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FBF5EC'/%3E%3Ctext x='50' y='66' font-size='40' font-family='Georgia,serif' font-style='italic' font-weight='600' fill='%23A9772F' text-anchor='middle'%3ESV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --cream:#FBF5EC;
+    --paper:#F3E7D8;
+    --ink:#2B1D14;
+    --text:#6B5A4C;
+    --gold:#A9772F;
+    --gold-soft:#C9A227;
+    --blush:#E7C7B8;
+    --line: rgba(43,29,20,0.14);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; background:var(--cream);}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0 0 .4em 0;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  p{color:var(--text); margin:0 0 1em 0;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+  section{padding:96px 0;}
+  .eyebrow{
+    font-family:'Inter',sans-serif; font-size:.78rem; color:var(--gold);
+    text-transform:uppercase; letter-spacing:.14em; font-weight:600;
+    display:inline-block; margin-bottom:16px;
+  }
+  .reveal{opacity:0; transform:translateY(30px);}
+
+  .ornament{display:flex; align-items:center; justify-content:center; gap:12px; max-width:180px; margin:0 auto;}
+  .ornament .line{flex:1; height:1px; background:var(--gold);}
+  .ornament .diamond{width:6px; height:6px; background:var(--gold); transform:rotate(45deg); flex-shrink:0;}
+
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,245,236,0.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1100px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{display:flex; align-items:center;}
+  .logo img{height:56px; width:auto; display:block;}
+  .nav-links{display:flex; align-items:center; gap:32px;}
+  .nav-links a{color:var(--text); text-decoration:none; font-size:.88rem; font-weight:500; letter-spacing:.03em; transition:.2s color;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links a.cta{
+    background:var(--ink); color:var(--cream); padding:10px 20px; border-radius:8px; font-weight:600;
+  }
+  .nav-links a.cta:hover{background:var(--gold);}
+  .burger{display:none; background:none; border:none; color:var(--ink); font-size:1.6rem; cursor:pointer;}
+  #mobileMenu{display:none; flex-direction:column; gap:16px; padding:20px 24px 24px; border-top:1px solid var(--line);}
+  #mobileMenu a{color:var(--ink); text-decoration:none; font-size:1rem;}
+
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background-image:
+      linear-gradient(180deg, rgba(30,20,14,0.42), rgba(30,20,14,0.72)),
+      url('boutique-sv-beauty.jpg');
+    background-size:cover;
+    background-position:center;
+  }
+  .hero-video{
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    object-fit:cover; z-index:0;
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(30,20,14,0.42), rgba(30,20,14,0.72));
+    z-index:0;
+  }
+  .hero .wrap{position:relative; z-index:1; max-width:720px;}
+  .hero .eyebrow{color:var(--gold-soft);}
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    font-style:italic;
+    font-weight:500;
+    line-height:1.1;
+    color:#FBF5EC;
+    text-shadow:0 4px 24px rgba(0,0,0,0.35);
+  }
+  .hero .lede{ font-size:1.08rem; max-width:44ch; margin:20px auto 0; color:#EAE1D4; }
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap; justify-content:center;}
+  .btn{
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:8px; font-weight:600; font-size:.92rem;
+    transition:.2s transform, .2s background, .2s border-color;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--gold); color:#FBF5EC;}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-outline{border:1px solid rgba(251,245,236,0.6); color:#FBF5EC; background:rgba(255,255,255,0.05);}
+  .btn-outline:hover{border-color:#FBF5EC; background:rgba(255,255,255,0.12);}
+
+  .philosophy{text-align:center; background:var(--paper);}
+  .philosophy blockquote{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.4rem, 3vw, 2rem); line-height:1.5; color:var(--ink);
+    max-width:760px; margin:0 auto; padding:0;
+  }
+  .philosophy cite{display:block; margin-top:24px; font-style:normal; font-size:.85rem; color:var(--gold); letter-spacing:.06em; text-transform:uppercase;}
+
+  .service-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+    margin-top:88px;
+  }
+  .service-row:first-of-type{margin-top:48px;}
+  .service-row.reverse .service-img{order:2;}
+  .service-row.reverse .service-text{order:1;}
+  .service-img img{
+    width:100%; height:380px; object-fit:cover; border-radius:var(--radius);
+    box-shadow:0 20px 50px -20px rgba(43,29,20,0.35);
+  }
+  .service-text .eyebrow{margin-bottom:10px;}
+  .service-text h3{font-size:1.9rem; font-style:italic; margin-bottom:14px;}
+  .service-text p{font-size:1rem; max-width:44ch;}
+  .service-text ul{list-style:none; padding:0; margin:20px 0 0 0;}
+  .service-text li{
+    font-size:.92rem; color:var(--text); padding:8px 0 8px 22px; position:relative;
+    border-top:1px solid var(--line);
+  }
+  .service-text li::before{content:"—"; position:absolute; left:0; color:var(--gold);}
+
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:48px;}
+  .gallery-grid img{
+    width:100%; height:220px; object-fit:cover; border-radius:12px;
+    transition:.4s transform;
+  }
+  .gallery-grid a{display:block; overflow:hidden; border-radius:12px;}
+  .gallery-grid a:hover img{transform:scale(1.06);}
+  .gallery-video{
+    width:100%; height:220px; object-fit:cover; border-radius:12px;
+    background:var(--ink);
+  }
+
+  .opening{
+    background:var(--ink); color:var(--cream); overflow:hidden;
+  }
+  .opening .wrap{
+    display:grid; grid-template-columns:1fr 300px; gap:56px; align-items:center;
+  }
+  .opening .eyebrow{color:var(--gold-soft);}
+  .opening h2{
+    color:var(--cream); font-size:clamp(1.8rem,3.4vw,2.6rem); font-style:italic;
+  }
+  .opening p{color:#D8CBBB; max-width:44ch;}
+  .opening-date{
+    display:inline-flex; align-items:center; gap:10px; margin:18px 0 26px 0;
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; color:var(--gold-soft);
+  }
+  .opening-date .dot{width:6px; height:6px; border-radius:50%; background:var(--gold);}
+  .opening-video-frame{
+    position:relative; border-radius:22px; overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.12);
+    aspect-ratio:9/16;
+  }
+  .opening-video-frame video{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  .tarifs-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px;}
+  .tarif-card{
+    background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 30px; opacity:0; transform:translateY(24px);
+  }
+  .tarif-card-head{display:flex; align-items:center; gap:14px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--line);}
+  .tarif-card-head .num{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--gold); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:1rem;
+  }
+  .tarif-card-head h3{font-size:1.2rem; font-style:italic; margin:0;}
+  .tarif-list{list-style:none; margin:0; padding:0;}
+  .tarif-list li{
+    display:flex; align-items:baseline; gap:8px;
+    font-size:.92rem; color:var(--text); padding:8px 0;
+  }
+  .tarif-list li .name{white-space:nowrap;}
+  .tarif-list li .fill{flex:1; border-bottom:1px dotted var(--line); transform:translateY(-4px);}
+  .tarif-list li .price{white-space:nowrap; color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums;}
+  .tarifs-note{
+    margin-top:32px; text-align:center; font-size:.85rem; color:var(--text);
+    font-style:italic;
+  }
+
+  .process{margin-top:56px; max-width:640px; margin-left:auto; margin-right:auto;}
+  .step{
+    display:grid; grid-template-columns:56px 1fr; gap:24px;
+    padding-bottom:44px; position:relative;
+    opacity:0; transform:translateY(20px);
+  }
+  .step::before{
+    content:""; position:absolute; left:27px; top:56px; bottom:0; width:1px; background:var(--line);
+  }
+  .step:last-child::before{display:none;}
+  .step:last-child{padding-bottom:0;}
+  .step .n{
+    width:56px; height:56px; border-radius:50%; border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; color:var(--gold);
+    flex-shrink:0; background:var(--cream);
+  }
+  .step h3{font-size:1.15rem; margin-bottom:6px;}
+  .step p{margin:0; font-size:.94rem;}
+
+  .contact-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:32px; margin-top:48px;}
+  .contact-card{background:var(--paper); border-radius:var(--radius); padding:32px;}
+  .contact-card strong{display:block; font-size:.78rem; color:var(--gold); text-transform:uppercase; letter-spacing:.1em; margin-top:20px; font-weight:600;}
+  .contact-card strong:first-child{margin-top:0;}
+  .contact-card p{margin:6px 0 0 0;}
+  .contact-card a{color:var(--ink); text-decoration:none; font-weight:500;}
+  .contact-card a:hover{color:var(--gold);}
+  form{display:flex; flex-direction:column; gap:16px;}
+  form label{font-size:.82rem; color:var(--text); display:block; margin-bottom:6px;}
+  form input, form textarea{
+    width:100%; padding:13px 16px; background:var(--paper); border:1px solid var(--line);
+    border-radius:9px; color:var(--ink); font-family:'Inter',sans-serif; font-size:.95rem;
+  }
+  form input::placeholder, form textarea::placeholder{color:#A6957F;}
+  form input:focus, form textarea:focus{outline:none; border-color:var(--gold);}
+  form button{
+    background:var(--gold); color:#FBF5EC; border:none; padding:15px; border-radius:9px;
+    font-weight:600; font-size:.95rem; cursor:pointer; transition:.2s background;
+  }
+  form button:hover{background:var(--gold-soft);}
+  form button:disabled{opacity:.6; cursor:default;}
+  #confirmationForm{margin-top:12px; font-size:.9rem; color:var(--gold);}
+
+  #backToTop{
+    position:fixed; bottom:24px; right:24px; width:46px; height:46px; border-radius:50%;
+    background:var(--ink); color:var(--cream); border:none; font-size:1.3rem; font-weight:700;
+    cursor:pointer; z-index:999; display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transform:translateY(12px);
+    transition:opacity .3s ease, transform .3s ease, background .2s;
+  }
+  #backToTop:hover{background:var(--gold);}
+  #backToTop.visible{opacity:1; pointer-events:auto; transform:translateY(0);}
+
+  .nav-social{display:flex; align-items:center; gap:14px; margin-right:6px;}
+  .nav-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:50%;
+    color:var(--ink); border:1px solid var(--line); transition:.25s all;
+  }
+  .nav-social a:hover{background:var(--ink); color:var(--cream); border-color:var(--ink); transform:translateY(-2px);}
+  .nav-social svg{width:16px; height:16px; fill:currentColor;}
+
+  .social-showcase{
+    background:var(--ink); text-align:center; position:relative; overflow:hidden;
+  }
+  .social-showcase::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(169,119,47,0.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(201,162,39,0.14), transparent 45%);
+    pointer-events:none;
+  }
+  .social-showcase .eyebrow{color:var(--gold-soft);}
+  .social-showcase h2{color:var(--cream); font-style:italic; font-size:2rem; position:relative;}
+  .social-showcase p{color:#D8CBBB; max-width:46ch; margin-left:auto; margin-right:auto; position:relative;}
+  .social-row{
+    display:flex; justify-content:center; gap:28px; margin-top:44px; flex-wrap:wrap; position:relative;
+  }
+  .social-card{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    text-decoration:none; width:168px; padding:28px 14px;
+    border:1px solid rgba(251,245,236,0.14); border-radius:16px;
+    background:rgba(251,245,236,0.03);
+    transition:.3s transform, .3s border-color, .3s background;
+    opacity:0; transform:translateY(24px);
+  }
+  .social-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    background:rgba(201,162,39,0.08);
+  }
+  .social-icon{
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color:#1A1108; transition:.3s transform;
+  }
+  .social-card:hover .social-icon{transform:scale(1.08) rotate(-4deg);}
+  .social-icon svg{width:26px; height:26px; fill:currentColor;}
+  .social-card .platform{font-family:'Fraunces',serif; font-style:italic; color:var(--cream); font-size:1.05rem;}
+  .social-card .handle{
+    font-size:.72rem; color:var(--gold-soft); letter-spacing:.02em;
+    word-break:break-word; overflow-wrap:anywhere; text-align:center; line-height:1.4;
+  }
+
+  footer{padding:36px 0; text-align:center; border-top:1px solid var(--line);}
+  footer p{font-size:.85rem; margin:0; color:var(--text);}
+
+  @media (max-width: 760px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .service-row, .service-row.reverse{grid-template-columns:1fr;}
+    .service-row.reverse .service-img{order:1;}
+    .service-row.reverse .service-text{order:2;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .tarifs-grid{grid-template-columns:1fr;}
+    .opening .wrap{grid-template-columns:1fr; text-align:center;}
+    .opening p{margin-left:auto; margin-right:auto;}
+    .opening-video-frame{max-width:280px; margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .service-img img{height:280px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><img src="logo-sv-beauty.png" alt="SV Beauty"></div>
+    <div class="nav-links">
+      <a href="#services">Prestations</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#process">Votre visite</a>
+      <div class="nav-social">
+        <a href="https://www.facebook.com/Sidneynaomie" target="_blank" rel="noopener" aria-label="Facebook SV Beauty">
+          <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/sv_beauty_by_champs_elysee" target="_blank" rel="noopener" aria-label="Instagram SV Beauty">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76a4.9 4.9 0 0 1 1.76-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.68A6.32 6.32 0 1 0 12 18.32 6.32 6.32 0 0 0 12 5.68Zm0 10.42A4.1 4.1 0 1 1 12 7.9a4.1 4.1 0 0 1 0 8.2Zm6.54-10.68a1.48 1.48 0 1 1-2.96 0 1.48 1.48 0 0 1 2.96 0Z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@svbeauty03" target="_blank" rel="noopener" aria-label="TikTok SV Beauty">
+          <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.9c0 1.53-1.24 2.79-2.79 2.79a2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.28 0 .55.04.8.12v-3.28a6.04 6.04 0 0 0-.8-.05A6.01 6.01 0 0 0 4.6 15.9a6.01 6.01 0 0 0 6.01 6.01 6.01 6.01 0 0 0 6.01-6.01V8.3a8.16 8.16 0 0 0 4.78 1.53V6.62a4.85 4.85 0 0 1-4.8-4.62Z"/></svg>
+        </a>
+      </div>
+      <a class="cta" href="#contact">Réserver</a>
+    </div>
+    <button class="burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div id="mobileMenu">
+    <a href="#services" onclick="fermerMenu()">Prestations</a>
+    <a href="#tarifs" onclick="fermerMenu()">Tarifs</a>
+    <a href="#gallery" onclick="fermerMenu()">Galerie</a>
+    <a href="#process" onclick="fermerMenu()">Votre visite</a>
+    <a href="#contact" onclick="fermerMenu()">Contact</a>
+    <div class="nav-social" style="margin-top:6px;">
+      <a href="https://www.facebook.com/Sidneynaomie" target="_blank" rel="noopener" aria-label="Facebook SV Beauty">
+        <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/sv_beauty_by_champs_elysee" target="_blank" rel="noopener" aria-label="Instagram SV Beauty">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76a4.9 4.9 0 0 1 1.76-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.68A6.32 6.32 0 1 0 12 18.32 6.32 6.32 0 0 0 12 5.68Zm0 10.42A4.1 4.1 0 1 1 12 7.9a4.1 4.1 0 0 1 0 8.2Zm6.54-10.68a1.48 1.48 0 1 1-2.96 0 1.48 1.48 0 0 1 2.96 0Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@svbeauty03" target="_blank" rel="noopener" aria-label="TikTok SV Beauty">
+        <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.9c0 1.53-1.24 2.79-2.79 2.79a2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.28 0 .55.04.8.12v-3.28a6.04 6.04 0 0 0-.8-.05A6.01 6.01 0 0 0 4.6 15.9a6.01 6.01 0 0 0 6.01 6.01 6.01 6.01 0 0 0 6.01-6.01V8.3a8.16 8.16 0 0 0 4.78 1.53V6.62a4.85 4.85 0 0 1-4.8-4.62Z"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <video class="hero-video" autoplay muted loop playsinline
+    poster="boutique-sv-beauty.jpg"
+    onerror="this.style.display='none'">
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="wrap">
+    <span class="eyebrow">Institut de beauté · Yaoundé</span>
+    <h1>Le luxe qui prend soin de vous</h1>
+    <p class="lede">SV Beauty vous accueille dans une ambiance chaleureuse pour des soins manucure, pédicure et maquillage haut de gamme, réalisés avec passion et précision.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#contact">Réserver un rendez-vous</a>
+      <a class="btn btn-outline" href="https://wa.me/237656109024">WhatsApp direct</a>
+    </div>
+  </div>
+</header>
+
+<section class="opening reveal">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Grand jour</span>
+      <h2>Bientôt l'ouverture de SV Beauty</h2>
+      <div class="opening-date"><span class="dot"></span> Samedi 08 août 2026</div>
+      <p>Nous ouvrons enfin nos portes à Odza ! Venez découvrir notre institut, rencontrer l'équipe et profiter des animations du jour de lancement.</p>
+      <div class="hero-ctas" style="justify-content:flex-start;">
+        <a class="btn btn-primary" href="https://wa.me/237656109024">Réserver ma place</a>
+      </div>
+    </div>
+    <div class="opening-video-frame">
+      <video controls muted playsinline poster="ouverture-poster.jpg">
+        <source src="ouverture-institut.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy reveal">
+  <div class="wrap">
+    <div class="ornament"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+    <blockquote>
+      « La beauté raffinée ne devrait jamais être hors de portée. Chez SV Beauty, chaque rendez-vous est pensé comme une parenthèse chaleureuse, où l'exigence du geste rencontre le confort de l'accueil. »
+    </blockquote>
+    <cite>L'esprit SV Beauty</cite>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap reveal">
+    <span class="eyebrow">Nos prestations</span>
+    <h2 style="font-size:2rem; font-style:italic;">Trois soins, un seul objectif : vous sublimer</h2>
+  </div>
+
+  <div class="wrap">
+    <div class="service-row">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?q=70&w=800&auto=format&fit=crop" alt="Manucure soignée chez SV Beauty">
+      </div>
+      <div class="service-text">
+        <span class="eyebrow">01 — Manucure</span>
+        <h3>Des mains impeccables</h3>
+        <p>Du soin classique aux poses les plus élaborées, chaque manucure est réalisée avec des produits de qualité et une attention portée aux moindres finitions.</p>
+        <ul>
+          <li>Limage & soin des cuticules</li>
+          <li>Vernis classique, semi-permanent ou nail art</li>
+          <li>Massage des mains inclus</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-row reverse">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1610992015762-45dca7fa3a85?q=70&w=800&auto=format&fit=crop" alt="Pédicure relaxante chez SV Beauty">
+      </div>
+      <div class="service-text">
+        <span class="eyebrow">02 — Pédicure</span>
+        <h3>Un moment de détente</h3>
+        <p>Bain relaxant, gommage et soin complet des pieds : une vraie pause bien-être, du bout des orteils jusqu'au talon.</p>
+        <ul>
+          <li>Bain relaxant & gommage</li>
+          <li>Soin des ongles et pose au choix</li>
+          <li>Massage des pieds inclus</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1709477542170-f11ee7d471a0?q=70&w=800&auto=format&fit=crop" alt="Maquillage professionnel chez SV Beauty">
+      </div>
+      <div class="service-text">
+        <span class="eyebrow">03 — Maquillage</span>
+        <h3>Sublimer votre naturel</h3>
+        <p>Du quotidien aux grandes occasions — mariage, soirée, shooting — un maquillage sur-mesure, adapté à votre visage et à l'événement.</p>
+        <ul>
+          <li>Diagnostic teint personnalisé</li>
+          <li>Produits longue tenue</li>
+          <li>Conseils entretien inclus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs" style="background:var(--paper);">
+  <div class="wrap reveal">
+    <span class="eyebrow">Grille tarifaire</span>
+    <h2 style="font-size:2rem; font-style:italic;">Nos tarifs, en toute transparence</h2>
+    <p style="max-width:52ch;">Tous les prix sont indiqués en FCFA. Pour toute question sur une prestation, contactez-nous directement sur WhatsApp.</p>
+
+    <div class="tarifs-grid">
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">I</span><h3>Maquillage</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Maquillage jour (nude/cocktail)</span><span class="fill"></span><span class="price">4 000</span></li>
+          <li><span class="name">Maquillage soirée</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Maquillage marié, par séance</span><span class="fill"></span><span class="price">15 000</span></li>
+          <li><span class="name">À domicile</span><span class="fill"></span><span class="price">+ 10 000</span></li>
+          <li><span class="name">Essai maquillage marié</span><span class="fill"></span><span class="price">10 000</span></li>
+          <li><span class="name">Fille d'honneur, par séance</span><span class="fill"></span><span class="price">4 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">II</span><h3>Soin</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Soin de visage complet</span><span class="fill"></span><span class="price">4 000</span></li>
+          <li><span class="name">Pédicure mixte chaude</span><span class="fill"></span><span class="price">3 000</span></li>
+          <li><span class="name">Jelly pédicure</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Manucure</span><span class="fill"></span><span class="price">2 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">III</span><h3>Extension de cils</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Hybride</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Hybride papillon</span><span class="fill"></span><span class="price">6 000</span></li>
+          <li><span class="name">Volume</span><span class="fill"></span><span class="price">7 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">IV</span><h3>Épilation & Traçage</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Épilation sous cils</span><span class="fill"></span><span class="price">1 000</span></li>
+          <li><span class="name">Traçage Tancho</span><span class="fill"></span><span class="price">1 500</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">V</span><h3>Onglerie</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Construction gel, à partir de</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Résine, à partir de</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Gainage, à partir de</span><span class="fill"></span><span class="price">4 000</span></li>
+          <li><span class="name">Capsule vernis gel</span><span class="fill"></span><span class="price">2 500</span></li>
+          <li><span class="name">Vernis gel</span><span class="fill"></span><span class="price">1 500</span></li>
+          <li><span class="name">Nail art, à partir de</span><span class="fill"></span><span class="price">1 000</span></li>
+        </ul>
+      </div>
+
+      <div class="tarif-card">
+        <div class="tarif-card-head"><span class="num">VI</span><h3>Coiffure</h3></div>
+        <ul class="tarif-list">
+          <li><span class="name">Pose lace</span><span class="fill"></span><span class="price">5 000</span></li>
+          <li><span class="name">Traitement de mèche, à partir de</span><span class="fill"></span><span class="price">2 000</span></li>
+          <li><span class="name">Customisation</span><span class="fill"></span><span class="price">2 000</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="tarifs-note">Tarifs susceptibles d'être ajustés selon la complexité de la prestation. Complexe Kinshasa, entrée Koweit, Odza — Yaoundé.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap reveal">
+    <span class="eyebrow">Galerie</span>
+    <h2 style="font-size:2rem; font-style:italic;">Nos réalisations</h2>
+    <div class="gallery-grid">
+      <video class="gallery-video" controls muted playsinline
+        poster="gallery-video-poster.jpg">
+        <source src="gallery-video.mp4" type="video/mp4">
+      </video>
+      <a href="realisation-ongles-rouge.jpg" target="_blank" rel="noopener">
+        <img src="realisation-ongles-rouge.jpg" alt="Réalisation manucure rouge SV Beauty">
+      </a>
+      <a href="realisation-ongles-corail.jpg" target="_blank" rel="noopener">
+        <img src="realisation-ongles-corail.jpg" alt="Réalisation manucure corail SV Beauty">
+      </a>
+      <a href="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=1200&auto=format&fit=crop" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=60&w=500&auto=format&fit=crop" alt="Réalisation pédicure SV Beauty">
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap reveal">
+    <span class="eyebrow">Comment ça se passe</span>
+    <h2 style="font-size:2rem; font-style:italic;">Votre visite chez SV Beauty</h2>
+    <div class="process">
+      <div class="step">
+        <div class="n">I</div>
+        <div>
+          <h3>Prise de contact</h3>
+          <p>Sur WhatsApp ou par téléphone, on échange sur vos besoins et on trouve le bon créneau pour vous.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">II</div>
+        <div>
+          <h3>Accueil personnalisé</h3>
+          <p>Vous êtes reçue dans notre espace chaleureux, dans une ambiance pensée pour votre confort.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">III</div>
+        <div>
+          <h3>Le soin</h3>
+          <p>Manucure, pédicure ou maquillage réalisé avec précision, dans le respect de votre rythme et de vos envies.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">IV</div>
+        <div>
+          <h3>Le résultat</h3>
+          <p>Vous repartez avec un résultat qui vous ressemble, prête à briller.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--paper);">
+  <div class="wrap reveal">
+    <span class="eyebrow">Parlons de votre rendez-vous</span>
+    <h2 style="font-size:2rem; font-style:italic;">Réserver un rendez-vous</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <strong>Adresse</strong>
+        <p>Entrée Koweit, Odza<br>Complexe Kinshasa — Yaoundé</p>
+        <strong>Téléphone</strong>
+        <p><a href="tel:+237656109024">+237 656 109 024</a></p>
+        <strong>WhatsApp</strong>
+        <p><a href="https://wa.me/237656109024">Écrire directement</a></p>
+      </div>
+      <form id="contactForm">
+        <label>Nom</label>
+        <input type="text" id="nom" name="name" placeholder="Votre nom">
+        <label>Email</label>
+        <input type="email" id="email" name="email" placeholder="Votre email">
+        <label>Votre demande</label>
+        <textarea id="message" name="message" rows="4" placeholder="Quel soin vous intéresse, et à quelle date ?"></textarea>
+        <button type="button" id="btnEnvoyer" onclick="envoyerMessage()">Envoyer la demande</button>
+        <p id="confirmationForm"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<button id="backToTop" onclick="scrollToTop()" aria-label="Remonter en haut">↑</button>
+
+<section class="social-showcase reveal">
+  <div class="wrap">
+    <span class="eyebrow">Restons connectées</span>
+    <h2>Suivez SV Beauty</h2>
+    <p>Coulisses, avant/après, promos et l'ouverture du 08 août en direct — tout se passe sur nos réseaux.</p>
+    <div class="social-row">
+      <a class="social-card" href="https://www.facebook.com/Sidneynaomie" target="_blank" rel="noopener">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+        </div>
+        <span class="platform">Facebook</span>
+        <span class="handle">Sidney Naomie</span>
+      </a>
+      <a class="social-card" href="https://www.instagram.com/sv_beauty_by_champs_elysee" target="_blank" rel="noopener">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76a4.9 4.9 0 0 1 1.76-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.68A6.32 6.32 0 1 0 12 18.32 6.32 6.32 0 0 0 12 5.68Zm0 10.42A4.1 4.1 0 1 1 12 7.9a4.1 4.1 0 0 1 0 8.2Zm6.54-10.68a1.48 1.48 0 1 1-2.96 0 1.48 1.48 0 0 1 2.96 0Z"/></svg>
+        </div>
+        <span class="platform">Instagram</span>
+        <span class="handle">@sv_beauty_by_champs_elysee</span>
+      </a>
+      <a class="social-card" href="https://www.tiktok.com/@svbeauty03" target="_blank" rel="noopener">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.9c0 1.53-1.24 2.79-2.79 2.79a2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.28 0 .55.04.8.12v-3.28a6.04 6.04 0 0 0-.8-.05A6.01 6.01 0 0 0 4.6 15.9a6.01 6.01 0 0 0 6.01 6.01 6.01 6.01 0 0 0 6.01-6.01V8.3a8.16 8.16 0 0 0 4.78 1.53V6.62a4.85 4.85 0 0 1-4.8-4.62Z"/></svg>
+        </div>
+        <span class="platform">TikTok</span>
+        <span class="handle">@svbeauty03</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>SV Beauty — Institut de beauté, Yaoundé © 2026</p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    var m = document.getElementById('mobileMenu');
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+  }
+  function fermerMenu(){
+    document.getElementById('mobileMenu').style.display = 'none';
+  }
+  function scrollToTop(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  window.addEventListener('scroll', function(){
+    var btn = document.getElementById('backToTop');
+    if(window.scrollY > 500){
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+
+  function envoyerMessage(){
+    var nom = document.getElementById('nom').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    var conf = document.getElementById('confirmationForm');
+    var btn = document.getElementById('btnEnvoyer');
+
+    if(nom === "" || email === "" || message === ""){
+      conf.innerText = "Merci de remplir tous les champs.";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Envoi en cours...";
+    conf.innerText = "";
+
+    var form = document.getElementById('contactForm');
+    var data = new FormData(form);
+
+    fetch("https://formspree.io/f/VOTRE_ID_SVBEAUTY", {
+      method: "POST",
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response){
+      btn.disabled = false;
+      btn.innerText = "Envoyer la demande";
+      if(response.ok){
+        conf.style.color = "var(--gold)";
+        conf.innerText = "Merci " + nom + ", votre demande a été reçue ! Nous vous recontactons rapidement.";
+        form.reset();
+      } else {
+        conf.style.color = "#B5473C";
+        conf.innerText = "Oups, l'envoi a échoué. Contactez-nous directement via WhatsApp.";
+      }
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.innerText = "Envoyer la demande";
+      conf.style.color = "#B5473C";
+      conf.innerText = "Oups, pas de connexion. Contactez-nous directement via WhatsApp.";
+    });
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.reveal').forEach(function(el){
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "top 85%" }
+    });
+  });
+
+  gsap.utils.toArray(".service-row").forEach(function(row){
+    gsap.fromTo(row, { opacity: 0, y: 40 }, {
+      opacity: 1, y: 0, duration: 0.9, ease: "power2.out",
+      scrollTrigger: { trigger: row, start: "top 82%" }
+    });
+  });
+
+  gsap.to(".tarif-card", {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power2.out",
+    stagger: 0.12,
+    scrollTrigger: { trigger: ".tarifs-grid", start: "top 85%" }
+  });
+
+  gsap.to(".social-card", {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: "power2.out",
+    stagger: 0.15,
+    scrollTrigger: { trigger: ".social-row", start: "top 88%" }
+  });
+
+  gsap.to(".step", {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: "power2.out",
+    stagger: 0.2,
+    scrollTrigger: { trigger: ".process", start: "top 78%" }
+  });
+</script>
+
+</body>
+</html>
