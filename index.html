@@ -303,7 +303,7 @@
   }
   .social-card{
     display:flex; flex-direction:column; align-items:center; gap:14px;
-    text-decoration:none; width:150px; padding:28px 16px;
+    text-decoration:none; width:168px; padding:28px 14px;
     border:1px solid rgba(251,245,236,0.14); border-radius:16px;
     background:rgba(251,245,236,0.03);
     transition:.3s transform, .3s border-color, .3s background;
@@ -323,7 +323,10 @@
   .social-card:hover .social-icon{transform:scale(1.08) rotate(-4deg);}
   .social-icon svg{width:26px; height:26px; fill:currentColor;}
   .social-card .platform{font-family:'Fraunces',serif; font-style:italic; color:var(--cream); font-size:1.05rem;}
-  .social-card .handle{font-size:.78rem; color:var(--gold-soft); letter-spacing:.03em;}
+  .social-card .handle{
+    font-size:.72rem; color:var(--gold-soft); letter-spacing:.02em;
+    word-break:break-word; overflow-wrap:anywhere; text-align:center; line-height:1.4;
+  }
 
   footer{padding:36px 0; text-align:center; border-top:1px solid var(--line);}
   footer p{font-size:.85rem; margin:0; color:var(--text);}
