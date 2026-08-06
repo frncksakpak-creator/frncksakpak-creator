@@ -276,6 +276,55 @@
   #backToTop:hover{background:var(--gold);}
   #backToTop.visible{opacity:1; pointer-events:auto; transform:translateY(0);}
 
+  .nav-social{display:flex; align-items:center; gap:14px; margin-right:6px;}
+  .nav-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:50%;
+    color:var(--ink); border:1px solid var(--line); transition:.25s all;
+  }
+  .nav-social a:hover{background:var(--ink); color:var(--cream); border-color:var(--ink); transform:translateY(-2px);}
+  .nav-social svg{width:16px; height:16px; fill:currentColor;}
+
+  .social-showcase{
+    background:var(--ink); text-align:center; position:relative; overflow:hidden;
+  }
+  .social-showcase::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(169,119,47,0.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(201,162,39,0.14), transparent 45%);
+    pointer-events:none;
+  }
+  .social-showcase .eyebrow{color:var(--gold-soft);}
+  .social-showcase h2{color:var(--cream); font-style:italic; font-size:2rem; position:relative;}
+  .social-showcase p{color:#D8CBBB; max-width:46ch; margin-left:auto; margin-right:auto; position:relative;}
+  .social-row{
+    display:flex; justify-content:center; gap:28px; margin-top:44px; flex-wrap:wrap; position:relative;
+  }
+  .social-card{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    text-decoration:none; width:150px; padding:28px 16px;
+    border:1px solid rgba(251,245,236,0.14); border-radius:16px;
+    background:rgba(251,245,236,0.03);
+    transition:.3s transform, .3s border-color, .3s background;
+    opacity:0; transform:translateY(24px);
+  }
+  .social-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    background:rgba(201,162,39,0.08);
+  }
+  .social-icon{
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color:#1A1108; transition:.3s transform;
+  }
+  .social-card:hover .social-icon{transform:scale(1.08) rotate(-4deg);}
+  .social-icon svg{width:26px; height:26px; fill:currentColor;}
+  .social-card .platform{font-family:'Fraunces',serif; font-style:italic; color:var(--cream); font-size:1.05rem;}
+  .social-card .handle{font-size:.78rem; color:var(--gold-soft); letter-spacing:.03em;}
+
   footer{padding:36px 0; text-align:center; border-top:1px solid var(--line);}
   footer p{font-size:.85rem; margin:0; color:var(--text);}
 
@@ -306,6 +355,17 @@
       <a href="#tarifs">Tarifs</a>
       <a href="#gallery">Galerie</a>
       <a href="#process">Votre visite</a>
+      <div class="nav-social">
+        <a href="https://www.facebook.com/Sidneynaomie" target="_blank" rel="noopener" aria-label="Facebook SV Beauty">
+          <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/sv_beauty_by_champs_elysee" target="_blank" rel="noopener" aria-label="Instagram SV Beauty">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76a4.9 4.9 0 0 1 1.76-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.68A6.32 6.32 0 1 0 12 18.32 6.32 6.32 0 0 0 12 5.68Zm0 10.42A4.1 4.1 0 1 1 12 7.9a4.1 4.1 0 0 1 0 8.2Zm6.54-10.68a1.48 1.48 0 1 1-2.96 0 1.48 1.48 0 0 1 2.96 0Z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@svbeauty03" target="_blank" rel="noopener" aria-label="TikTok SV Beauty">
+          <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.9c0 1.53-1.24 2.79-2.79 2.79a2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.28 0 .55.04.8.12v-3.28a6.04 6.04 0 0 0-.8-.05A6.01 6.01 0 0 0 4.6 15.9a6.01 6.01 0 0 0 6.01 6.01 6.01 6.01 0 0 0 6.01-6.01V8.3a8.16 8.16 0 0 0 4.78 1.53V6.62a4.85 4.85 0 0 1-4.8-4.62Z"/></svg>
+        </a>
+      </div>
       <a class="cta" href="#contact">Réserver</a>
     </div>
     <button class="burger" onclick="toggleMenu()">☰</button>
@@ -316,6 +376,17 @@
     <a href="#gallery" onclick="fermerMenu()">Galerie</a>
     <a href="#process" onclick="fermerMenu()">Votre visite</a>
     <a href="#contact" onclick="fermerMenu()">Contact</a>
+    <div class="nav-social" style="margin-top:6px;">
+      <a href="https://www.facebook.com/Sidneynaomie" target="_blank" rel="noopener" aria-label="Facebook SV Beauty">
+        <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/sv_beauty_by_champs_elysee" target="_blank" rel="noopener" aria-label="Instagram SV Beauty">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76a4.9 4.9 0 0 1 1.76-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.68A6.32 6.32 0 1 0 12 18.32 6.32 6.32 0 0 0 12 5.68Zm0 10.42A4.1 4.1 0 1 1 12 7.9a4.1 4.1 0 0 1 0 8.2Zm6.54-10.68a1.48 1.48 0 1 1-2.96 0 1.48 1.48 0 0 1 2.96 0Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@svbeauty03" target="_blank" rel="noopener" aria-label="TikTok SV Beauty">
+        <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.9c0 1.53-1.24 2.79-2.79 2.79a2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.28 0 .55.04.8.12v-3.28a6.04 6.04 0 0 0-.8-.05A6.01 6.01 0 0 0 4.6 15.9a6.01 6.01 0 0 0 6.01 6.01 6.01 6.01 0 0 0 6.01-6.01V8.3a8.16 8.16 0 0 0 4.78 1.53V6.62a4.85 4.85 0 0 1-4.8-4.62Z"/></svg>
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -584,6 +655,37 @@
 
 <button id="backToTop" onclick="scrollToTop()" aria-label="Remonter en haut">↑</button>
 
+<section class="social-showcase reveal">
+  <div class="wrap">
+    <span class="eyebrow">Restons connectées</span>
+    <h2>Suivez SV Beauty</h2>
+    <p>Coulisses, avant/après, promos et l'ouverture du 08 août en direct — tout se passe sur nos réseaux.</p>
+    <div class="social-row">
+      <a class="social-card" href="https://www.facebook.com/Sidneynaomie" target="_blank" rel="noopener">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+        </div>
+        <span class="platform">Facebook</span>
+        <span class="handle">Sidney Naomie</span>
+      </a>
+      <a class="social-card" href="https://www.instagram.com/sv_beauty_by_champs_elysee" target="_blank" rel="noopener">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76a4.9 4.9 0 0 1 1.76-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.68A6.32 6.32 0 1 0 12 18.32 6.32 6.32 0 0 0 12 5.68Zm0 10.42A4.1 4.1 0 1 1 12 7.9a4.1 4.1 0 0 1 0 8.2Zm6.54-10.68a1.48 1.48 0 1 1-2.96 0 1.48 1.48 0 0 1 2.96 0Z"/></svg>
+        </div>
+        <span class="platform">Instagram</span>
+        <span class="handle">@sv_beauty_by_champs_elysee</span>
+      </a>
+      <a class="social-card" href="https://www.tiktok.com/@svbeauty03" target="_blank" rel="noopener">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.9c0 1.53-1.24 2.79-2.79 2.79a2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.28 0 .55.04.8.12v-3.28a6.04 6.04 0 0 0-.8-.05A6.01 6.01 0 0 0 4.6 15.9a6.01 6.01 0 0 0 6.01 6.01 6.01 6.01 0 0 0 6.01-6.01V8.3a8.16 8.16 0 0 0 4.78 1.53V6.62a4.85 4.85 0 0 1-4.8-4.62Z"/></svg>
+        </div>
+        <span class="platform">TikTok</span>
+        <span class="handle">@svbeauty03</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <p>SV Beauty — Institut de beauté, Yaoundé © 2026</p>
@@ -680,6 +782,15 @@
     ease: "power2.out",
     stagger: 0.12,
     scrollTrigger: { trigger: ".tarifs-grid", start: "top 85%" }
+  });
+
+  gsap.to(".social-card", {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: "power2.out",
+    stagger: 0.15,
+    scrollTrigger: { trigger: ".social-row", start: "top 88%" }
   });
 
   gsap.to(".step", {
